@@ -207,6 +207,7 @@
             const nombre = document.getElementById('nombre').value;
             const edad = parseInt(document.getElementById('edad').value, 10);
             const experiencia = document.querySelector('input[name="experiencia"]:checked').value;
+            const mensajeOpcional = document.getElementById('mensaje').value.trim();
             
             // Ocultar formulario
             document.getElementById('form-container').classList.add('hidden');
@@ -224,7 +225,11 @@
                     perfilTexto = 'Soy estudiante de Arquitectura / Corredor Inmobiliario';
                 }
 
-                const mensaje = `Quisiera contactarme con ustedes. Mi nombre es ${nombre}. Tengo ${edad} años. Completé el formulario para la búsqueda de Asesor/a Comercial. ${perfilTexto}.`;
+                let mensaje = `Quisiera contactarme con ustedes. Mi nombre es ${nombre}. Tengo ${edad} años. Completé el formulario para la búsqueda de Asesor/a Comercial. ${perfilTexto}.`;
+                
+                if (mensajeOpcional !== '') {
+                    mensaje += ` Además te comento: "${mensajeOpcional}"`;
+                }
                 
                 const whatsappUrl = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensaje)}`;
                 document.getElementById('whatsapp-btn').setAttribute('href', whatsappUrl);
