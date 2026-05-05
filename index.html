@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda Laboral - Fransa Propiedades</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playball&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fransa: {
+                            dark: '#0a1d3a', // Fondo azul oscuro
+                            accent: '#3b82f6', // Celeste/azul claro
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        logo: ['Playball', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a1d3a;
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center p-4">
+
+    <!-- Contenedor Principal -->
+    <div class="w-full max-w-md mx-auto mt-8 mb-12">
+        
+        <!-- Header / Logo -->
+        <div class="text-center mb-8">
+            <h1 class="font-logo text-5xl mb-1">Fransa</h1>
+            <p class="text-[10px] tracking-widest uppercase font-semibold">Negocios Inmobiliarios</p>
+        </div>
+
+        <!-- Título -->
+        <div class="bg-fransa-accent text-center py-2 mb-3">
+            <h2 class="text-xl font-bold uppercase tracking-wider">Búsqueda Laboral</h2>
+        </div>
+        <h3 class="text-center text-xl font-semibold mb-8">Asesor/a comercial</h3>
+
+        <!-- Formulario -->
+        <div id="form-container" class="fade-in border-t border-gray-400 pt-8">
+            
+            <p class="text-sm mb-6 text-gray-200">
+                Completá tus datos a continuación. Estamos buscando perfiles con experiencia en el rubro inmobiliario para sumar a nuestro equipo.
+            </p>
+
+            <form id="application-form" class="space-y-5">
+                
+                <!-- Campo 1: Nombre -->
+                <div>
+                    <label for="nombre" class="block text-sm font-semibold mb-1">Nombre y Apellido *</label>
+                    <input type="text" id="nombre" required
+                        class="w-full px-4 py-2 bg-transparent border border-gray-400 rounded focus:outline-none focus:border-fransa-accent focus:ring-1 focus:ring-fransa-accent transition text-white placeholder-gray-500"
+                        placeholder="Ej. Juan Pérez">
+                </div>
+
+                <!-- Campo 2: Teléfono -->
+                <div>
+                    <label for="telefono" class="block text-sm font-semibold mb-1">Teléfono o Celular *</label>
+                    <input type="tel" id="telefono" required
+                        class="w-full px-4 py-2 bg-transparent border border-gray-400 rounded focus:outline-none focus:border-fransa-accent focus:ring-1 focus:ring-fransa-accent transition text-white placeholder-gray-500"
+                        placeholder="Ej. 11 1234 5678">
+                </div>
+
+                <!-- Campo 3: Experiencia -->
+                <div>
+                    <label class="block text-sm font-semibold mb-2">¿Tenés experiencia y conocimiento del rubro inmobiliario? *</label>
+                    <div class="flex gap-4">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="experiencia" value="si" class="w-4 h-4 text-fransa-accent bg-transparent border-gray-400 focus:ring-fransa-accent" required>
+                            <span class="ml-2">Sí, tengo experiencia</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="experiencia" value="no" class="w-4 h-4 text-fransa-accent bg-transparent border-gray-400 focus:ring-fransa-accent" required>
+                            <span class="ml-2">No por el momento</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Campo 4: Breve mensaje (Opcional) -->
+                <div>
+                    <label for="mensaje" class="block text-sm font-semibold mb-1">Contanos brevemente sobre tu experiencia (Opcional)</label>
+                    <textarea id="mensaje" rows="3"
+                        class="w-full px-4 py-2 bg-transparent border border-gray-400 rounded focus:outline-none focus:border-fransa-accent focus:ring-1 focus:ring-fransa-accent transition text-white placeholder-gray-500"
+                        placeholder="Zonas en las que trabajaste, etc."></textarea>
+                </div>
+
+                <!-- Botón de Enviar -->
+                <button type="submit" 
+                    class="w-full bg-fransa-accent hover:bg-blue-600 text-white font-bold py-3 px-4 rounded transition duration-300 mt-4">
+                    Evaluar mi perfil
+                </button>
+            </form>
+        </div>
+
+        <!-- Mensaje de Éxito y WhatsApp (Oculto inicialmente) -->
+        <div id="success-container" class="hidden fade-in border-t border-gray-400 pt-8 text-center">
+            
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 text-green-400 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            
+            <h3 class="text-2xl font-bold mb-2 text-white">¡Excelente perfil!</h3>
+            <p class="text-gray-200 mb-8">
+                Tu perfil cumple con los requisitos que estamos buscando para sumarte a nuestro equipo.
+                <br><br>
+                Hacé clic en el siguiente botón para enviarnos tu CV por WhatsApp y coordinar una entrevista.
+            </p>
+
+            <a id="whatsapp-btn" href="#" target="_blank"
+                class="flex items-center justify-center w-full bg-[#25D366] hover:bg-[#20b858] text-white font-bold py-3 px-4 rounded transition duration-300 shadow-lg gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Contactar por WhatsApp
+            </a>
+        </div>
+
+        <!-- Mensaje de Rechazo (Oculto inicialmente) -->
+        <div id="rejected-container" class="hidden fade-in border-t border-gray-400 pt-8 text-center">
+            <h3 class="text-xl font-bold mb-4 text-white">¡Gracias por tu interés!</h3>
+            <p class="text-gray-200">
+                En este momento estamos buscando únicamente personas que cuenten con <strong>experiencia previa comprobable en el rubro inmobiliario</strong>.
+                <br><br>
+                Por lo tanto, no avanzaremos con tu perfil en esta ocasión. De todos modos, agradecemos mucho tu tiempo.
+                <br><br>
+                ¡Te deseamos el mayor de los éxitos!
+            </p>
+            <button onclick="location.reload()" class="mt-6 text-sm text-fransa-accent hover:underline">
+                Volver al formulario
+            </button>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="border-t border-gray-400 mt-12 pt-6 pb-4 text-center">
+            <div class="mb-4">
+                <p class="text-sm font-semibold tracking-wider mb-2">TE OFRECEMOS</p>
+                <ul class="text-xs space-y-1 text-gray-300">
+                    <li class="flex items-center justify-center gap-2">
+                        <span class="text-fransa-accent font-bold">&gt;</span> Capacitación + crecimiento profesional.
+                    </li>
+                    <li class="flex items-center justify-center gap-2">
+                        <span class="text-fransa-accent font-bold">&gt;</span> Cartera de propiedades + oficina.
+                    </li>
+                    <li class="flex items-center justify-center gap-2">
+                        <span class="text-fransa-accent font-bold">&gt;</span> Excelente equipo de trabajo.
+                    </li>
+                </ul>
+            </div>
+            <p class="text-xs text-gray-400">info@fransapropiedades.com.ar</p>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('application-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const experiencia = document.querySelector('input[name="experiencia"]:checked').value;
+            
+            // Ocultar formulario
+            document.getElementById('form-container').classList.add('hidden');
+            
+            if (experiencia === 'si') {
+                // Configurar mensaje de WhatsApp
+                // IMPORTANTE: Reemplazar el número '5491100000000' por el número real del cliente
+                const numeroWhatsApp = '5491100000000'; // EJEMPLO: 54911...
+                const mensaje = `Hola, mi nombre es ${nombre}. Completé el formulario para la búsqueda de Asesor/a Comercial. Tengo experiencia en el rubro y me gustaría enviarles mi CV. Mi número es ${telefono}.`;
+                
+                const whatsappUrl = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+                document.getElementById('whatsapp-btn').setAttribute('href', whatsappUrl);
+                
+                // Mostrar éxito
+                document.getElementById('success-container').classList.remove('hidden');
+            } else {
+                // Mostrar rechazo
+                document.getElementById('rejected-container').classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
