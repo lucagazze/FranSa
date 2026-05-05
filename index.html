@@ -228,7 +228,7 @@
                 let mensaje = `Quisiera contactarme con ustedes. Mi nombre es ${nombre}. Tengo ${edad} años. Completé el formulario para la búsqueda de Asesor/a Comercial. ${perfilTexto}.`;
                 
                 if (mensajeOpcional !== '') {
-                    mensaje += ` Además te comento: "${mensajeOpcional}"`;
+                    mensaje += ` - Mi experiencia: "${mensajeOpcional}"`;
                 }
                 
                 const whatsappUrl = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensaje)}`;
