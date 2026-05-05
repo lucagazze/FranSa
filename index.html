@@ -170,7 +170,7 @@
         <div id="rejected-container" class="hidden fade-in border-t border-gray-400 pt-8 text-center">
             <h3 class="text-xl font-bold mb-4 text-white">¡Gracias por tu interés!</h3>
             <p class="text-gray-200 text-sm">
-                En este momento estamos buscando únicamente personas de 25 a 40 años que cuenten con <strong>experiencia previa comprobable en el rubro inmobiliario</strong> o sean <strong>estudiantes de Arquitectura/Corredor Inmobiliario</strong>.
+                En este momento estamos buscando únicamente personas que cuenten con <strong>experiencia previa comprobable en el rubro inmobiliario</strong> o sean <strong>estudiantes de Arquitectura/Corredor Inmobiliario</strong>.
                 <br><br>
                 Por lo tanto, no avanzaremos con tu perfil en esta ocasión. De todos modos, agradecemos mucho tu tiempo.
             </p>
@@ -211,8 +211,8 @@
             // Ocultar formulario
             document.getElementById('form-container').classList.add('hidden');
             
-            // Validación: Edad entre 25 y 40, y que no sea "otro" rubro
-            if (edad >= 25 && edad <= 40 && (experiencia === 'experiencia' || experiencia === 'estudiante')) {
+            // Validación: Que tenga experiencia o sea estudiante (sin bloquear estrictamente por edad)
+            if (experiencia === 'experiencia' || experiencia === 'estudiante') {
                 // Configurar mensaje de WhatsApp
                 const numeroWhatsApp = '5493417790298'; 
                 
