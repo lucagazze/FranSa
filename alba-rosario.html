@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALBA — Emprendimiento en Rosario | Fransa Propiedades</title>
+    <link rel="icon" type="image/png" href="https://static.tokkobroker.com/tfw_images/10004_Fransa%20Negocios%20Inmobiliarios/loggo.png">
+    <link rel="apple-touch-icon" href="https://static.tokkobroker.com/tfw_images/10004_Fransa%20Negocios%20Inmobiliarios/loggo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playball&display=swap" rel="stylesheet">
+
+    <!-- Meta Pixel -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','536739142547267');
+    fbq('track','PageView');
+    fbq('track','ViewContent',{content_name:'ALBA Rosario',content_type:'property',currency:'USD'});
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=536739142547267&ev=PageView&noscript=1"/></noscript>
+
+    <script>
+    tailwind.config={theme:{extend:{colors:{fransa:{dark:'#0a1d3a',accent:'#3b82f6'}},fontFamily:{sans:['Montserrat','sans-serif'],logo:['Playball','cursive']}}}}
+    </script>
+
+    <style>
+        body{background-color:#0a1d3a;color:white;min-height:100vh}
+        .fade-in{animation:fadeIn .5s ease-in-out}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+        /* Carousel */
+        #car{overflow:hidden;position:relative}
+        .slides{display:flex;transition:transform .4s ease}
+        .slide{min-width:100%}
+        .slide img{width:100%;height:260px;object-fit:cover;display:block;cursor:zoom-in}
+
+        /* Lightbox */
+        #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:200;align-items:center;justify-content:center}
+        #lb.open{display:flex}
+        #lb-img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:6px;user-select:none}
+        #lb-close{position:absolute;top:14px;right:16px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;padding:4px 10px}
+        .lb-arr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:2rem;cursor:pointer;padding:8px 16px;border-radius:8px;line-height:1;transition:background .15s}
+        .lb-arr:hover{background:rgba(255,255,255,.3)}
+        #lb-prev{left:10px}#lb-next{right:10px}
+        #lb-cnt{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.65);font-size:.72rem;font-family:Montserrat,sans-serif;letter-spacing:.05em}
+
+        /* Unit cards */
+        .unit-card{border:1.5px solid rgba(59,130,246,.3);border-radius:10px;padding:16px;cursor:pointer;transition:all .2s;background:rgba(59,130,246,.05)}
+        .unit-card:hover{border-color:#3b82f6;background:rgba(59,130,246,.12);transform:translateY(-2px)}
+        .unit-card.selected{border-color:#3b82f6;background:rgba(59,130,246,.2)}
+
+        /* Funnel */
+        .f-opt{border:1.5px solid rgba(255,255,255,.2);border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .2s;display:flex;align-items:flex-start;gap:10px}
+        .f-opt:hover{border-color:#3b82f6;background:rgba(59,130,246,.1)}
+        .f-opt.on{border-color:#3b82f6;background:rgba(59,130,246,.18)}
+        .f-opt svg{flex-shrink:0;margin-top:2px}
+        .f-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.2);transition:background .2s}
+        .f-dot.on{background:#3b82f6}
+        .f-line{flex:1;height:2px;background:rgba(255,255,255,.15);transition:background .2s}
+        .f-line.on{background:#3b82f6}
+
+        /* FAB */
+        #fab{position:fixed;bottom:24px;right:20px;z-index:100;background:#0d2f52;color:white;border:none;padding:14px 20px;border-radius:50px;font-family:Montserrat,sans-serif;font-size:.875rem;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.4);transition:background .2s,transform .15s}
+        #fab:hover{background:#1a4a7a;transform:translateY(-2px)}
+
+        /* Delivery card */
+        .delivery-card{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.25);border-radius:10px;padding:20px}
+
+        /* Car counter */
+        #car-counter{color:rgba(255,255,255,.45);font-size:.7rem;text-align:center;margin-top:8px;letter-spacing:.05em}
+    </style>
+</head>
+<body onclick="if(typeof fbq==='function')fbq('trackCustom','ClicEnPantalla');">
+
+<div class="w-full max-w-md mx-auto">
+
+    <!-- Header -->
+    <div class="text-center pt-8 pb-4">
+        <h1 class="font-logo text-4xl mb-0.5">Fransa</h1>
+        <p class="text-[9px] tracking-widest uppercase font-semibold text-gray-400">Negocios Inmobiliarios</p>
+    </div>
+
+    <!-- Hero -->
+    <div class="relative">
+        <img src="https://static.tokkobroker.com/dev_pictures/70001_98201862374961122208522184209867085060520319302638939809413542257718910348453.jpg"
+             alt="Emprendimiento ALBA Rosario"
+             class="w-full object-cover" style="height:290px;object-position:center;">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0a1d3a] via-[#0a1d3a]/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5">
+            <span class="text-[10px] font-semibold tracking-wider uppercase text-blue-300 border border-blue-400/40 bg-blue-500/10 rounded px-2 py-0.5">En construcción · Entrega Julio 2027</span>
+            <h2 class="text-5xl font-bold tracking-widest text-white mt-2">ALBA</h2>
+            <p class="text-sm text-gray-300 mt-0.5">Don Orione y Bv. Avellaneda · Rosario</p>
+        </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="grid grid-cols-3 border-b border-gray-700/50 text-center">
+        <div class="py-3 border-r border-gray-700/50">
+            <p class="text-[10px] text-gray-400 uppercase tracking-wider">Unidades</p>
+            <p class="text-sm font-bold mt-0.5">57 dptos.</p>
+        </div>
+        <div class="py-3 border-r border-gray-700/50">
+            <p class="text-[10px] text-gray-400 uppercase tracking-wider">Superficie</p>
+            <p class="text-sm font-bold mt-0.5">60 – 100m²+</p>
+        </div>
+        <div class="py-3">
+            <p class="text-[10px] text-gray-400 uppercase tracking-wider">Estructura</p>
+            <p class="text-sm font-bold mt-0.5">10 pisos + Rooftop</p>
+        </div>
+    </div>
+
+    <!-- Hero CTA -->
+    <div class="px-4 pt-6 pb-2">
+        <button onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})"
+            class="w-full bg-fransa-accent hover:bg-blue-600 text-white font-bold py-3 px-4 rounded transition duration-300 text-sm">
+            Consultar precios y disponibilidad →
+        </button>
+    </div>
+
+    <!-- Unit Types -->
+    <div class="px-4 py-6 border-b border-gray-700/50">
+        <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-4 font-semibold">Elegí tu tipología</p>
+        <div class="grid grid-cols-2 gap-3">
+            <div class="unit-card" onclick="selectUnit('1dorm')">
+                <div class="w-9 h-9 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-base">1</div>
+                <p class="font-bold text-sm mt-2">1 DORMITORIO</p>
+                <p class="text-xs text-gray-400">~60m²</p>
+                <p class="text-xs text-gray-400 mt-0.5">Home office · Balcón</p>
+                <p class="text-xs text-blue-400 mt-2 font-semibold">Consultar →</p>
+            </div>
+            <div class="unit-card" onclick="selectUnit('2dorm')">
+                <div class="w-9 h-9 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-base">2</div>
+                <p class="font-bold text-sm mt-2">2 DORMITORIOS</p>
+                <p class="text-xs text-gray-400">~100m²+</p>
+                <p class="text-xs text-gray-400 mt-0.5">Home office · Balcón</p>
+                <p class="text-xs text-blue-400 mt-2 font-semibold">Consultar →</p>
+            </div>
+        </div>
+        <p class="text-[10px] text-gray-500 mt-3 text-center">Tocá una tipología para pre-completar tu consulta</p>
+    </div>
+
+    <!-- Description -->
+    <div class="px-4 py-5 border-b border-gray-700/50">
+        <p class="text-sm text-gray-300 leading-relaxed">
+            ALBA se ubica en una zona de alto potencial inmobiliario, a pasos de Puerto Norte, Alto Rosario Shopping y el Río Paraná. Acceso directo al centro por el Boulevard Avellaneda. Unidades con home office, balcones amplios y preinstalación de aire acondicionado individual.
+        </p>
+    </div>
+
+    <!-- Gallery -->
+    <div class="py-6 border-b border-gray-700/50">
+        <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-3 px-4 font-semibold">Imágenes</p>
+        <div id="car" class="relative">
+            <div class="slides" id="slides">
+                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_98201862374961122208522184209867085060520319302638939809413542257718910348453.jpg" alt="ALBA 1"></div>
+                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_62202876492140510679025786345710539420388794379336481853142549989053118529690.jpg" alt="ALBA 2"></div>
+                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_32370831746698462937563557441353902119751021910235683065289691200009410513650.jpg" alt="ALBA 3"></div>
+                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_36604329094139661663384369268338337379272981901001737735066359966588823027855.jpg" alt="ALBA 4"></div>
+                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_5184431767197439031738451876832429803101577535147137594778535655835728002996.jpg" alt="ALBA 5"></div>
+                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_19331295598047280418374732164529016781314130599328556275464229986092649671691.jpg" alt="ALBA 6"></div>
+                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_80400459241018780097167951977397409058705660890242890463522710207965813636327.jpg" alt="ALBA 7"></div>
+                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_111924055096477709819049983141848895564445649237886804991583391343917252707537.jpg" alt="ALBA 8"></div>
+                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_11101789435657150176781124447691176716796943448037662876454964880254021965549.jpg" alt="ALBA 9"></div>
+            </div>
+            <button onclick="carNav(-1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white border-none rounded-full w-8 h-8 flex items-center justify-center text-lg transition z-10">‹</button>
+            <button onclick="carNav(1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white border-none rounded-full w-8 h-8 flex items-center justify-center text-lg transition z-10">›</button>
+        </div>
+        <p id="car-counter" class="text-center mt-2 text-xs text-gray-500">1 / 9</p>
+    </div>
+
+    <!-- Amenities -->
+    <div class="px-4 py-6 border-b border-gray-700/50">
+        <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-4 font-semibold">Amenities del edificio</p>
+        <ul class="grid grid-cols-2 gap-y-2.5 gap-x-4 text-sm">
+            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Rooftop abierto</li>
+            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Gimnasio</li>
+            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Parrilla / Quincho</li>
+            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Solarium</li>
+            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Pet friendly</li>
+            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Locales comerciales PB</li>
+            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Cochera subterránea</li>
+            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Bicicletero</li>
+        </ul>
+    </div>
+
+    <!-- Location highlight -->
+    <div class="px-4 py-5 border-b border-gray-700/50">
+        <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-3 font-semibold">Ubicación estratégica</p>
+        <ul class="space-y-1.5 text-sm text-gray-300">
+            <li class="flex items-center gap-2"><span class="text-fransa-accent font-bold">&gt;</span> A metros de Puerto Norte</li>
+            <li class="flex items-center gap-2"><span class="text-fransa-accent font-bold">&gt;</span> Próximo a Alto Rosario Shopping</li>
+            <li class="flex items-center gap-2"><span class="text-fransa-accent font-bold">&gt;</span> Acceso directo al Río Paraná</li>
+            <li class="flex items-center gap-2"><span class="text-fransa-accent font-bold">&gt;</span> Conexión directa al centro por Bv. Avellaneda</li>
+        </ul>
+    </div>
+
+    <!-- Delivery & Financing -->
+    <div class="px-4 py-6 border-b border-gray-700/50">
+        <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-4 font-semibold">Entrega y financiación</p>
+        <div class="delivery-card">
+            <div class="flex items-baseline gap-3 mb-3">
+                <p class="text-[10px] text-blue-400 font-semibold uppercase tracking-wider">Entrega</p>
+                <p class="text-2xl font-bold">Julio 2027</p>
+            </div>
+            <div class="border-t border-blue-500/20 pt-3 grid grid-cols-3 gap-3 text-center">
+                <div>
+                    <p class="text-xl font-bold text-white">30%</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5">Anticipo</p>
+                </div>
+                <div class="border-x border-blue-500/20">
+                    <p class="text-xl font-bold text-white">50</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5">Cuotas en pesos</p>
+                </div>
+                <div>
+                    <p class="text-sm font-bold text-blue-300">CAC</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5">Indexadas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Funnel CTA -->
+    <div id="cta" class="px-4 py-8 border-b border-gray-700/50">
+        <h3 class="text-xl font-bold mb-1">Consultá precios y disponibilidad</h3>
+        <p class="text-sm text-gray-300 mb-6">Completá los datos para que un asesor de Fransa te contacte.</p>
+
+        <!-- Progress -->
+        <div class="flex items-center mb-6">
+            <div id="fd1" class="f-dot on"></div>
+            <div id="fl1" class="f-line"></div>
+            <div id="fd2" class="f-dot"></div>
+            <div id="fl2" class="f-line"></div>
+            <div id="fd3" class="f-dot"></div>
+        </div>
+
+        <!-- Step 1: Tipología -->
+        <div id="fs1" class="fstep space-y-3 fade-in">
+            <p class="text-sm font-semibold mb-1">¿Qué tipología te interesa?</p>
+            <div class="f-opt" data-v="1dorm" onclick="pick(1,'1dorm')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span class="text-sm">1 dormitorio — ~60m²</span>
+            </div>
+            <div class="f-opt" data-v="2dorm" onclick="pick(1,'2dorm')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span class="text-sm">2 dormitorios — ~100m²+</span>
+            </div>
+            <div class="f-opt" data-v="todas" onclick="pick(1,'todas')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                <span class="text-sm">Quiero ver todas las opciones</span>
+            </div>
+            <button id="fnx1" onclick="toS(2)" disabled
+                class="w-full bg-fransa-accent hover:bg-blue-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold py-2.5 rounded transition mt-1 text-sm">
+                Siguiente →
+            </button>
+        </div>
+
+        <!-- Step 2: Motivo -->
+        <div id="fs2" class="fstep hidden space-y-3 fade-in">
+            <button onclick="toS(1)" class="text-xs text-gray-400 hover:text-gray-200 mb-1 flex items-center gap-1">← Anterior</button>
+            <p class="text-sm font-semibold mb-1">¿Para qué la comprarías?</p>
+            <div class="f-opt" data-v="vivienda" onclick="pick(2,'vivienda')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <span class="text-sm">Vivienda propia / familiar</span>
+            </div>
+            <div class="f-opt" data-v="inversion" onclick="pick(2,'inversion')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span class="text-sm">Inversión / renta</span>
+            </div>
+            <div class="f-opt" data-v="segunda" onclick="pick(2,'segunda')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                <span class="text-sm">Segunda vivienda</span>
+            </div>
+            <div class="f-opt" data-v="explorando" onclick="pick(2,'explorando')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                <span class="text-sm text-gray-400">Solo estoy explorando</span>
+            </div>
+            <button id="fnx2" onclick="toS(3)" disabled
+                class="w-full bg-fransa-accent hover:bg-blue-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold py-2.5 rounded transition mt-1 text-sm">
+                Siguiente →
+            </button>
+        </div>
+
+        <!-- Step 3: Plazo + Nombre -->
+        <div id="fs3" class="fstep hidden space-y-3 fade-in">
+            <button onclick="toS(2)" class="text-xs text-gray-400 hover:text-gray-200 mb-1 flex items-center gap-1">← Anterior</button>
+            <p class="text-sm font-semibold mb-1">¿Cuándo pensás tomar la decisión?</p>
+            <div class="f-opt" data-v="pronto" onclick="pick(3,'pronto')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span class="text-sm">Quiero reservar pronto</span>
+            </div>
+            <div class="f-opt" data-v="tres" onclick="pick(3,'tres')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <span class="text-sm">En los próximos 3 meses</span>
+            </div>
+            <div class="f-opt" data-v="seis" onclick="pick(3,'seis')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <span class="text-sm text-gray-400">En 6 meses o más</span>
+            </div>
+            <div class="f-opt" data-v="indef" onclick="pick(3,'indef')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span class="text-sm text-gray-400">Sin plazo definido</span>
+            </div>
+            <div>
+                <label for="fnom" class="block text-sm font-semibold mb-1 mt-1">Tu nombre *</label>
+                <input id="fnom" type="text" placeholder="Ej. María García"
+                    class="w-full px-4 py-2 bg-transparent border border-gray-400 rounded focus:outline-none focus:border-fransa-accent focus:ring-1 focus:ring-fransa-accent transition text-white placeholder-gray-500 text-sm">
+            </div>
+            <button id="fnx3" onclick="submitF()" disabled
+                class="w-full bg-fransa-accent hover:bg-blue-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold py-2.5 rounded transition mt-1 text-sm">
+                Consultar disponibilidad →
+            </button>
+        </div>
+
+        <!-- Éxito -->
+        <div id="f-ok" class="hidden fade-in text-center py-4">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-green-500/20 text-green-400 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <h3 class="text-xl font-bold mb-1">¡Listo, <span id="f-nom-disp"></span>!</h3>
+            <p class="text-gray-300 text-sm mb-6">Hacé clic para hablar con un asesor de Fransa y conocer los precios de ALBA.</p>
+            <a id="f-wa" href="#" target="_blank" onclick="if(typeof fbq==='function')fbq('track','Lead',{content_name:'ALBA Rosario',currency:'USD'});"
+               class="flex items-center justify-center w-full bg-[#25D366] hover:bg-[#20b858] text-white font-bold py-3 px-4 rounded transition gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Hablar con un asesor
+            </a>
+            <button onclick="resetF()" class="mt-4 text-xs text-gray-500 hover:text-gray-300">Volver al inicio</button>
+        </div>
+
+        <!-- Rechazo -->
+        <div id="f-rej" class="hidden fade-in text-center py-4">
+            <h3 class="text-lg font-bold mb-3">¡Gracias por tu interés!</h3>
+            <p class="text-gray-300 text-sm leading-relaxed">En este momento priorizamos consultas de compradores con horizonte de decisión en los próximos meses. Cuando estés listo/a para decidir, no dudes en volver a escribirnos.</p>
+            <button onclick="resetF()" class="mt-5 text-sm text-fransa-accent hover:underline">Volver al formulario</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t border-gray-700/50 px-4 py-6 text-center mb-20">
+        <p class="text-xs text-gray-400">fransapropiedades@gmail.com</p>
+        <p class="text-xs text-gray-500 mt-1">© Fransa Negocios Inmobiliarios · Rosario</p>
+    </div>
+
+</div>
+
+<!-- FAB -->
+<button id="fab" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'});if(typeof fbq==='function')fbq('trackCustom','ClickFAB');">
+    Estoy interesado/a
+</button>
+
+<!-- Lightbox -->
+<div id="lb" onclick="closeLb()">
+    <button id="lb-close" onclick="closeLb()">×</button>
+    <button class="lb-arr" id="lb-prev" onclick="event.stopPropagation();lbNav(-1)">‹</button>
+    <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
+    <button class="lb-arr" id="lb-next" onclick="event.stopPropagation();lbNav(1)">›</button>
+    <div id="lb-cnt"></div>
+</div>
+
+<script>
+    // ---- LIGHTBOX ----
+    let lbSrcs=[],lbI=0;
+    function openLb(idx){lbSrcs=Array.from(document.querySelectorAll('#car .slide img')).map(i=>i.src);lbI=idx;lbRender();document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
+    function lbRender(){document.getElementById('lb-img').src=lbSrcs[lbI];document.getElementById('lb-cnt').textContent=(lbI+1)+' / '+lbSrcs.length;}
+    function lbNav(d){lbI=(lbI+d+lbSrcs.length)%lbSrcs.length;lbRender();}
+    function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+    document.addEventListener('keydown',e=>{if(!document.getElementById('lb').classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='ArrowRight')lbNav(1);});
+    document.getElementById('car').addEventListener('click',e=>{const img=e.target.closest('.slide img');if(img){const all=Array.from(document.querySelectorAll('#car .slide img'));openLb(all.indexOf(img));}});
+    let lbTx=0;
+    document.getElementById('lb').addEventListener('touchstart',e=>{lbTx=e.touches[0].clientX;},{passive:true});
+    document.getElementById('lb').addEventListener('touchend',e=>{const d=lbTx-e.changedTouches[0].clientX;if(Math.abs(d)>40)lbNav(d>0?1:-1);},{passive:true});
+
+    // ---- CAROUSEL ----
+    let cur=0;
+    const slidesEl=document.getElementById('slides');
+    const totalSlides=document.querySelectorAll('#car .slide').length;
+    const counterEl=document.getElementById('car-counter');
+    function updateCounter(){counterEl.textContent=(cur+1)+' / '+totalSlides;}
+    function goSlide(n){cur=(n+totalSlides)%totalSlides;slidesEl.style.transform=`translateX(-${cur*100}%)`;updateCounter();}
+    function carNav(d){goSlide(cur+d);}
+    let carTx=0;
+    document.getElementById('car').addEventListener('touchstart',e=>{carTx=e.touches[0].clientX;},{passive:true});
+    document.getElementById('car').addEventListener('touchend',e=>{const d=carTx-e.changedTouches[0].clientX;if(Math.abs(d)>40)carNav(d>0?1:-1);},{passive:true});
+
+    // ---- FUNNEL ----
+    const TX={
+        '1dorm':'1 dormitorio (~60m²)',
+        '2dorm':'2 dormitorios (~100m²+)',
+        todas:'Todas las tipologías',
+        vivienda:'Vivienda propia / familiar',
+        inversion:'Inversión / renta',
+        segunda:'Segunda vivienda',
+        explorando:'Solo estoy explorando',
+        pronto:'Quiero reservar pronto',
+        tres:'En los próximos 3 meses',
+        seis:'En 6 meses o más',
+        indef:'Sin plazo definido'
+    };
+    const sel={};
+    function pick(s,v){sel['s'+s]=v;document.querySelectorAll('#fs'+s+' .f-opt').forEach(e=>e.classList.remove('on'));document.querySelector('#fs'+s+' [data-v="'+v+'"]').classList.add('on');if(s<3){document.getElementById('fnx'+s).disabled=false;}else{chk3();}}
+    function chk3(){document.getElementById('fnx3').disabled=!(sel.s3&&document.getElementById('fnom').value.trim());}
+    function toS(n){document.querySelectorAll('.fstep').forEach(e=>e.classList.add('hidden'));document.getElementById('fs'+n).classList.remove('hidden');[1,2,3].forEach(i=>{document.getElementById('fd'+i).className='f-dot'+(i<=n?' on':'');const l=document.getElementById('fl'+i);if(l)l.className='f-line'+(i<n?' on':'');});setTimeout(()=>document.getElementById('cta').scrollIntoView({behavior:'smooth',block:'nearest'}),50);}
+    function submitF(){const nom=document.getElementById('fnom').value.trim();if(!nom){document.getElementById('fnom').focus();return;}if(!sel.s3)return;document.getElementById('fs3').classList.add('hidden');const rej=sel.s2==='explorando'||sel.s3==='seis'||sel.s3==='indef';if(rej){document.getElementById('f-rej').classList.remove('hidden');}else{const msg=`Hola, soy ${nom}. Me interesa el emprendimiento ALBA (Don Orione y Bv. Avellaneda, Rosario). Tipología: ${TX[sel.s1]}. Motivo: ${TX[sel.s2]}. Plazo: ${TX[sel.s3]}.`;document.getElementById('f-wa').href='https://api.whatsapp.com/send?phone=5493417790298&text='+encodeURIComponent(msg);document.getElementById('f-nom-disp').textContent=nom;document.getElementById('f-ok').classList.remove('hidden');if(typeof fbq==='function')fbq('track','Lead',{content_name:'ALBA Rosario',currency:'USD'});}setTimeout(()=>document.getElementById('cta').scrollIntoView({behavior:'smooth',block:'nearest'}),50);}
+    function resetF(){Object.keys(sel).forEach(k=>delete sel[k]);document.querySelectorAll('.f-opt').forEach(e=>e.classList.remove('on'));document.getElementById('fnom').value='';['fnx1','fnx2','fnx3'].forEach(id=>document.getElementById(id).disabled=true);document.getElementById('f-ok').classList.add('hidden');document.getElementById('f-rej').classList.add('hidden');document.querySelectorAll('.unit-card').forEach(c=>c.classList.remove('selected'));toS(1);}
+    function selectUnit(type){document.querySelectorAll('.unit-card').forEach(c=>c.classList.remove('selected'));event.currentTarget.classList.add('selected');pick(1,type);document.getElementById('cta').scrollIntoView({behavior:'smooth'});}
+    document.getElementById('fnom').addEventListener('input',chk3);
+</script>
+</body>
+</html>
