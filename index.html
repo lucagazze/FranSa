@@ -25,6 +25,7 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '536739142547267');
     fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {content_name: 'Búsqueda Laboral Asesor Comercial'});
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=536739142547267&ev=PageView&noscript=1"
@@ -203,6 +204,14 @@
     </div>
 
     <script>
+        let formStarted = false;
+        document.getElementById('application-form').addEventListener('input', function() {
+            if (!formStarted && typeof fbq === 'function') {
+                formStarted = true;
+                fbq('track', 'InitiateCheckout', {content_name: 'Búsqueda Laboral Asesor Comercial'});
+            }
+        });
+
         document.getElementById('application-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -238,10 +247,11 @@
                 
                 // Mostrar éxito
                 document.getElementById('success-container').classList.remove('hidden');
-                if(typeof fbq === 'function') fbq('track', 'Lead');
+                if(typeof fbq === 'function') fbq('track', 'Lead', {content_name: 'Búsqueda Laboral Asesor Comercial'});
             } else {
                 // Mostrar rechazo
                 document.getElementById('rejected-container').classList.remove('hidden');
+                if(typeof fbq === 'function') fbq('trackCustom', 'RejectedLead', {reason: 'Sin experiencia / No estudiante'});
             }
         });
     </script>
