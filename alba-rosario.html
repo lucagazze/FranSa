@@ -1,363 +1,328 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALBA — Emprendimiento en Rosario | Fransa Propiedades</title>
-    <link rel="icon" type="image/png" href="https://static.tokkobroker.com/tfw_images/10004_Fransa%20Negocios%20Inmobiliarios/loggo.png">
-    <link rel="apple-touch-icon" href="https://static.tokkobroker.com/tfw_images/10004_Fransa%20Negocios%20Inmobiliarios/loggo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playball&display=swap" rel="stylesheet">
-
-    <!-- Meta Pixel -->
-    <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','1149946139536218');
-    fbq('track','PageView');
-    fbq('track','ViewContent',{content_name:'ALBA Rosario',content_type:'property',currency:'USD'});
-    </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1149946139536218&ev=PageView&noscript=1"/></noscript>
-
-    <script>
-    tailwind.config={theme:{extend:{colors:{fransa:{dark:'#0a1d3a',accent:'#3b82f6'}},fontFamily:{sans:['Montserrat','sans-serif'],logo:['Playball','cursive']}}}}
-    </script>
-
-    <style>
-        body{background-color:#0a1d3a;color:white;min-height:100vh}
-        .fade-in{animation:fadeIn .5s ease-in-out}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-
-        /* Carousel */
-        #car{overflow:hidden;position:relative}
-        .slides{display:flex;transition:transform .4s ease}
-        .slide{min-width:100%}
-        .slide img{width:100%;height:260px;object-fit:cover;display:block;cursor:zoom-in}
-
-        /* Lightbox */
-        #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:200;align-items:center;justify-content:center}
-        #lb.open{display:flex}
-        #lb-img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:6px;user-select:none}
-        #lb-close{position:absolute;top:14px;right:16px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;padding:4px 10px}
-        .lb-arr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:2rem;cursor:pointer;padding:8px 16px;border-radius:8px;line-height:1;transition:background .15s}
-        .lb-arr:hover{background:rgba(255,255,255,.3)}
-        #lb-prev{left:10px}#lb-next{right:10px}
-        #lb-cnt{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.65);font-size:.72rem;font-family:Montserrat,sans-serif;letter-spacing:.05em}
-
-        /* Unit cards */
-        .unit-card{border:1.5px solid rgba(59,130,246,.3);border-radius:10px;padding:16px;cursor:pointer;transition:all .2s;background:rgba(59,130,246,.05)}
-        .unit-card:hover{border-color:#3b82f6;background:rgba(59,130,246,.12);transform:translateY(-2px)}
-        .unit-card.selected{border-color:#3b82f6;background:rgba(59,130,246,.2)}
-
-        /* Funnel */
-        .f-opt{border:1.5px solid rgba(255,255,255,.2);border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .2s;display:flex;align-items:flex-start;gap:10px}
-        .f-opt:hover{border-color:#3b82f6;background:rgba(59,130,246,.1)}
-        .f-opt.on{border-color:#3b82f6;background:rgba(59,130,246,.18)}
-        .f-opt svg{flex-shrink:0;margin-top:2px}
-        .f-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.2);transition:background .2s}
-        .f-dot.on{background:#3b82f6}
-        .f-line{flex:1;height:2px;background:rgba(255,255,255,.15);transition:background .2s}
-        .f-line.on{background:#3b82f6}
-
-        /* FAB */
-        #fab{position:fixed;bottom:24px;right:20px;z-index:100;background:#0d2f52;color:white;border:none;padding:14px 20px;border-radius:50px;font-family:Montserrat,sans-serif;font-size:.875rem;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.4);transition:background .2s,transform .15s}
-        #fab:hover{background:#1a4a7a;transform:translateY(-2px)}
-
-        /* Delivery card */
-        .delivery-card{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.25);border-radius:10px;padding:20px}
-
-        /* Car counter */
-        #car-counter{color:rgba(255,255,255,.45);font-size:.7rem;text-align:center;margin-top:8px;letter-spacing:.05em}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALBA — Emprendimiento en Rosario | Fransa Propiedades</title>
+  <link rel="icon" type="image/png" href="https://static.tokkobroker.com/tfw_images/10004_Fransa%20Negocios%20Inmobiliarios/loggo.png">
+  <link rel="apple-touch-icon" href="https://static.tokkobroker.com/tfw_images/10004_Fransa%20Negocios%20Inmobiliarios/loggo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playball&display=swap" rel="stylesheet">
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','411280484456173');fbq('track','PageView');
+  fbq('track','ViewContent',{content_name:'ALBA Rosario',content_type:'property',currency:'USD'});
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=411280484456173&ev=PageView&noscript=1"/></noscript>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Montserrat','sans-serif'],logo:['Playball','cursive']}}}}</script>
+  <style>
+    *{box-sizing:border-box}
+    body{background:#fff;color:#0f172a;margin:0;font-family:Montserrat,sans-serif}
+    .carousel-track{display:flex;transition:transform .4s ease;height:100%}
+    .slide{min-width:100%;height:100%;overflow:hidden;background:#e2e8f0}
+    .slide img{width:100%;height:100%;object-fit:cover;display:block}
+    .fade-in{animation:fi .5s ease}
+    @keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .divider{border:none;border-top:1px solid #e2e8f0;margin:1.5rem 0}
+    .spec-val{font-size:1.4rem;font-weight:700;color:#0d2f52;line-height:1}
+    .spec-lbl{font-size:.6rem;color:#94a3b8;margin-top:3px;text-transform:uppercase;letter-spacing:.05em}
+    .feat li{display:flex;align-items:flex-start;gap:10px;font-size:.875rem;color:#374151;padding:9px 0;border-bottom:1px solid #f1f5f9}
+    .feat li:last-child{border-bottom:none}
+    .tag{display:inline-block;font-size:.7rem;padding:4px 12px;border-radius:9999px;background:#edf2f7;color:#0d2f52;border:1px solid #c2d4e4;font-weight:500}
+    .tag-green{background:#f0fdf4;color:#16a34a;border-color:#bbf7d0}
+    .stitle{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#94a3b8;font-weight:600;margin-bottom:.75rem}
+    .card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px}
+    .map-wrap{border-radius:12px;overflow:hidden;border:1px solid #e2e8f0}
+    .hl-card{background:#edf2f7;border-radius:12px;padding:14px 8px;text-align:center}
+    .hl-icon{display:flex;justify-content:center;margin-bottom:6px;color:#0d2f52}
+    .hl-txt{font-size:.72rem;font-weight:700;color:#0d2f52;line-height:1.3}
+    .unit-card{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px;cursor:pointer;transition:all .15s}
+    .unit-card:hover{border-color:#0d2f52;transform:translateY(-2px)}
+    .unit-card.selected{border-color:#0d2f52;background:#edf2f7}
+    .unit-badge{width:36px;height:36px;border-radius:50%;background:#edf2f7;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#0d2f52;margin-bottom:8px;transition:background .15s}
+    .unit-card.selected .unit-badge{background:#0d2f52;color:#fff}
+    #fab{position:fixed;bottom:22px;right:18px;z-index:50;background:#0d2f52;color:#fff;border-radius:60px;padding:13px 22px;font-weight:700;font-size:.875rem;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(13,47,82,.35);font-family:Montserrat,sans-serif;transition:transform .15s}
+    #fab:active{transform:scale(.95)}
+    .funnel-wrap{border:1.5px solid #e2e8f0;border-radius:16px;padding:20px;background:#fff}
+    .f-prog{display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+    .f-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;background:#e2e8f0;color:#94a3b8;flex-shrink:0;transition:all .25s}
+    .f-dot.on{background:#0d2f52;color:#fff}
+    .f-line{flex:1;height:2px;background:#e2e8f0;max-width:48px;transition:background .25s}
+    .f-line.on{background:#0d2f52}
+    .f-q{font-size:.95rem;font-weight:700;color:#0f172a;margin-bottom:12px;margin-top:0}
+    .f-opt{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;margin-bottom:8px;transition:all .15s;background:#fff;width:100%;text-align:left;font-family:Montserrat,sans-serif}
+    .f-opt.on{border-color:#0d2f52;background:#edf2f7}
+    .f-opt-ico{width:18px;height:18px;flex-shrink:0;color:#94a3b8;transition:color .15s}
+    .f-opt.on .f-opt-ico{color:#0d2f52}
+    .f-opt-txt{font-size:.85rem;font-weight:500;color:#374151;transition:all .15s}
+    .f-opt.on .f-opt-txt{color:#0d2f52;font-weight:600}
+    .f-btn{width:100%;padding:14px;background:#0d2f52;color:#fff;border:none;border-radius:12px;font-weight:700;font-size:.9rem;cursor:pointer;margin-top:14px;font-family:Montserrat,sans-serif;transition:opacity .2s}
+    .f-btn:disabled{background:#e2e8f0;color:#94a3b8;cursor:not-allowed}
+    .f-back{background:none;border:none;color:#0d2f52;font-size:.8rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:3px;margin-top:10px;padding:0;font-family:Montserrat,sans-serif}
+    .f-input{width:100%;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-family:Montserrat,sans-serif;font-size:.875rem;outline:none;color:#0f172a;margin-bottom:14px;transition:border-color .15s}
+    .f-input:focus{border-color:#0d2f52}
+    .f-lbl{font-size:.75rem;font-weight:600;color:#64748b;margin-bottom:4px;display:block}
+    .fstep{animation:fi .3s ease}
+    #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:200;align-items:center;justify-content:center}
+    #lb.open{display:flex}
+    #lb-img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:6px;user-select:none}
+    #lb-close{position:absolute;top:14px;right:16px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;padding:4px 10px}
+    .lb-arr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:2rem;cursor:pointer;padding:8px 16px;border-radius:8px;line-height:1;transition:background .15s}
+    .lb-arr:hover{background:rgba(255,255,255,.3)}
+    #lb-prev{left:10px}#lb-next{right:10px}
+    #lb-cnt{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.65);font-size:.72rem;font-family:Montserrat,sans-serif;letter-spacing:.05em}
+    .slide img{cursor:zoom-in}
+    .dot-ind{width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,.2);transition:background .25s;flex-shrink:0}
+    .dot-ind.on{background:#0d2f52}
+  </style>
 </head>
-<body onclick="if(typeof fbq==='function')fbq('trackCustom','ClicEnPantalla');">
+<body>
 
-<div class="w-full max-w-md mx-auto">
+  <header style="background:#fff;border-bottom:1px solid #e2e8f0" class="text-center py-5">
+    <div class="font-logo text-4xl" style="color:#0f172a">Fransa</div>
+    <p style="font-size:.6rem;letter-spacing:.18em;color:#94a3b8" class="uppercase font-semibold mt-1">Negocios Inmobiliarios</p>
+  </header>
 
-    <!-- Header -->
-    <div class="text-center pt-8 pb-4">
-        <h1 class="font-logo text-4xl mb-0.5">Fransa</h1>
-        <p class="text-[9px] tracking-widest uppercase font-semibold text-gray-400">Negocios Inmobiliarios</p>
+  <div style="background:#0d2f52" class="text-center py-5 px-4">
+    <div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px;font-weight:600">Emprendimiento en construcción</div>
+    <div class="text-4xl font-bold text-white tracking-widest">ALBA</div>
+    <div class="text-sm text-white/80 mt-1">Don Orione y Bv. Avellaneda Bis · Rosario · 57 unidades · 60 a 100m²</div>
+    <div style="font-size:.72rem;color:rgba(255,255,255,.5);margin-top:5px">Entrega: Julio 2027 &nbsp;·&nbsp; 10 pisos + Rooftop</div>
+    <button onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})"
+      style="margin-top:16px;background:#fff;color:#0d2f52;font-weight:700;font-size:.85rem;padding:10px 26px;border-radius:50px;border:none;cursor:pointer;font-family:Montserrat,sans-serif;letter-spacing:.01em">
+      Consultar precios y disponibilidad →
+    </button>
+  </div>
+
+  <div id="car" class="relative overflow-hidden w-full" style="aspect-ratio:4/3;max-height:460px;background:#e2e8f0">
+    <div class="carousel-track" id="trk">
+      <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_98201862374961122208522184209867085060520319302638939809413542257718910348453.jpg" alt="" loading="eager"></div>
+      <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_62202876492140510679025786345710539420388794379336481853142549989053118529690.jpg" alt="" loading="lazy"></div>
+      <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_32370831746698462937563557441353902119751021910235683065289691200009410513650.jpg" alt="" loading="lazy"></div>
+      <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_36604329094139661663384369268338337379272981901001737735066359966588823027855.jpg" alt="" loading="lazy"></div>
+      <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_5184431767197439031738451876832429803101577535147137594778535655835728002996.jpg" alt="" loading="lazy"></div>
+      <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_19331295598047280418374732164529016781314130599328556275464229986092649671691.jpg" alt="" loading="lazy"></div>
+      <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_80400459241018780097167951977397409058705660890242890463522710207965813636327.jpg" alt="" loading="lazy"></div>
+      <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_111924055096477709819049983141848895564445649237886804991583391343917252707537.jpg" alt="" loading="lazy"></div>
+      <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_11101789435657150176781124447691176716796943448037662876454964880254021965549.jpg" alt="" loading="lazy"></div>
+    </div>
+    <button onclick="cs(-1)" style="background:rgba(255,255,255,.85);color:#0f172a" class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full w-9 h-9 flex items-center justify-center text-xl shadow z-10">‹</button>
+    <button onclick="cs(1)"  style="background:rgba(255,255,255,.85);color:#0f172a" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full w-9 h-9 flex items-center justify-center text-xl shadow z-10">›</button>
+    <div id="dots" class="absolute bottom-3 left-0 right-0 flex justify-center items-center gap-1.5 z-10"></div>
+  </div>
+
+  <main class="max-w-md mx-auto px-4 pb-28 fade-in">
+
+    <div class="pt-6 pb-3">
+      <h1 class="text-xl font-bold mb-1" style="color:#0f172a">Emprendimiento ALBA — Don Orione y Bv. Avellaneda Bis</h1>
+      <p class="text-sm" style="color:#64748b">
+        <svg style="display:inline;width:13px;height:13px;margin-right:3px;vertical-align:-2px" fill="none" stroke="#0d2f52" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Don Orione y Bv. Avellaneda Bis · Rosario, Santa Fe
+      </p>
     </div>
 
-    <!-- Hero -->
-    <div class="relative">
-        <img src="https://static.tokkobroker.com/dev_pictures/70001_98201862374961122208522184209867085060520319302638939809413542257718910348453.jpg"
-             alt="Emprendimiento ALBA Rosario"
-             class="w-full object-cover" style="height:290px;object-position:center;">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0a1d3a] via-[#0a1d3a]/20 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-5">
-            <span class="text-[10px] font-semibold tracking-wider uppercase text-blue-300 border border-blue-400/40 bg-blue-500/10 rounded px-2 py-0.5">En construcción · Entrega Julio 2027</span>
-            <h2 class="text-5xl font-bold tracking-widest text-white mt-2">ALBA</h2>
-            <p class="text-sm text-gray-300 mt-0.5">Don Orione y Bv. Avellaneda · Rosario</p>
-        </div>
+    <hr class="divider">
+
+    <p class="stitle">El Emprendimiento</p>
+    <div class="grid grid-cols-3 gap-0 rounded-xl overflow-hidden mb-4" style="border:1px solid #e2e8f0">
+      <div class="text-center py-5" style="background:#f8fafc">
+        <div class="hl-icon"><svg width="22" height="22" fill="none" stroke="#0d2f52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="spec-val">57</div><div class="spec-lbl">unidades</div>
+      </div>
+      <div class="text-center py-5" style="background:#f8fafc;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0">
+        <div class="hl-icon"><svg width="22" height="22" fill="none" stroke="#0d2f52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="spec-val" style="font-size:1rem">60–100</div><div class="spec-lbl">m² cubiertos</div>
+      </div>
+      <div class="text-center py-5" style="background:#f8fafc">
+        <div class="hl-icon"><svg width="22" height="22" fill="none" stroke="#0d2f52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+        <div class="spec-val">10+R</div><div class="spec-lbl">pisos + Rooftop</div>
+      </div>
     </div>
 
-    <!-- Stats bar -->
-    <div class="grid grid-cols-3 border-b border-gray-700/50 text-center">
-        <div class="py-3 border-r border-gray-700/50">
-            <p class="text-[10px] text-gray-400 uppercase tracking-wider">Unidades</p>
-            <p class="text-sm font-bold mt-0.5">57 dptos.</p>
-        </div>
-        <div class="py-3 border-r border-gray-700/50">
-            <p class="text-[10px] text-gray-400 uppercase tracking-wider">Superficie</p>
-            <p class="text-sm font-bold mt-0.5">60 – 100m²+</p>
-        </div>
-        <div class="py-3">
-            <p class="text-[10px] text-gray-400 uppercase tracking-wider">Estructura</p>
-            <p class="text-sm font-bold mt-0.5">10 pisos + Rooftop</p>
-        </div>
+    <div class="grid grid-cols-3 gap-2 mb-5">
+      <div class="hl-card">
+        <div class="hl-icon"><svg width="24" height="24" fill="none" stroke="#0d2f52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
+        <div class="hl-txt">Rooftop abierto</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon"><svg width="24" height="24" fill="none" stroke="#0d2f52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="hl-txt">Entrega Julio 2027</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon"><svg width="24" height="24" fill="none" stroke="#0d2f52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <div class="hl-txt">Pet Friendly</div>
+      </div>
     </div>
 
-    <!-- Hero CTA -->
-    <div class="px-4 pt-6 pb-2">
-        <button onclick="if(typeof fbq==='function') fbq('track','Contact',{content_name:'ALBA Rosario', source:'HeroCTA'}); document.getElementById('cta').scrollIntoView({behavior:'smooth'});"
-            class="w-full bg-fransa-accent hover:bg-blue-600 text-white font-bold py-3 px-4 rounded transition duration-300 text-sm">
-            Consultar precios y disponibilidad →
-        </button>
+    <div class="flex flex-wrap gap-2 mb-5">
+      <span class="tag" style="background:#fef9ec;color:#92400e;border-color:#fde68a">En construcción</span>
+      <span class="tag">Financiación CAC</span>
+      <span class="tag tag-green">Puerto Norte</span>
+      <span class="tag">Cochera subterránea</span>
+      <span class="tag">Locales comerciales PB</span>
     </div>
 
-    <!-- Unit Types -->
-    <div class="px-4 py-6 border-b border-gray-700/50">
-        <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-4 font-semibold">Elegí tu tipología</p>
-        <div class="grid grid-cols-2 gap-3">
-            <div class="unit-card" onclick="selectUnit('1dorm')">
-                <div class="w-9 h-9 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-base">1</div>
-                <p class="font-bold text-sm mt-2">1 DORMITORIO</p>
-                <p class="text-xs text-gray-400">~60m²</p>
-                <p class="text-xs text-gray-400 mt-0.5">Home office · Balcón</p>
-                <p class="text-xs text-blue-400 mt-2 font-semibold">Consultar →</p>
-            </div>
-            <div class="unit-card" onclick="selectUnit('2dorm')">
-                <div class="w-9 h-9 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-base">2</div>
-                <p class="font-bold text-sm mt-2">2 DORMITORIOS</p>
-                <p class="text-xs text-gray-400">~100m²+</p>
-                <p class="text-xs text-gray-400 mt-0.5">Home office · Balcón</p>
-                <p class="text-xs text-blue-400 mt-2 font-semibold">Consultar →</p>
-            </div>
-        </div>
-        <p class="text-[10px] text-gray-500 mt-3 text-center">Tocá una tipología para pre-completar tu consulta</p>
+    <hr class="divider">
+
+    <p class="stitle">Tipologías disponibles</p>
+    <p class="text-xs mb-4" style="color:#64748b">Tocá una tipología para pre-completar tu consulta.</p>
+    <div class="grid grid-cols-2 gap-3 mb-5">
+      <div class="unit-card" onclick="selectUnit('1dorm')">
+        <div class="unit-badge">1</div>
+        <div class="text-sm font-bold" style="color:#0f172a">1 DORMITORIO</div>
+        <div class="text-xs mt-0.5" style="color:#94a3b8">~60m²</div>
+        <div class="text-xs font-semibold mt-2" style="color:#0d2f52">Consultar disponibilidad →</div>
+      </div>
+      <div class="unit-card" onclick="selectUnit('2dorm')">
+        <div class="unit-badge">2</div>
+        <div class="text-sm font-bold" style="color:#0f172a">2 DORMITORIOS</div>
+        <div class="text-xs mt-0.5" style="color:#94a3b8">~100m² o más</div>
+        <div class="text-xs font-semibold mt-2" style="color:#0d2f52">Consultar disponibilidad →</div>
+      </div>
     </div>
 
-    <!-- Description -->
-    <div class="px-4 py-5 border-b border-gray-700/50">
-        <p class="text-sm text-gray-300 leading-relaxed">
-            ALBA se ubica en una zona de alto potencial inmobiliario, a pasos de Puerto Norte, Alto Rosario Shopping y el Río Paraná. Acceso directo al centro por el Boulevard Avellaneda. Unidades con home office, balcones amplios y preinstalación de aire acondicionado individual.
-        </p>
+    <hr class="divider">
+
+    <p class="stitle">El Proyecto</p>
+    <p class="text-sm mb-5 leading-relaxed" style="color:#374151">ALBA es un edificio de 10 pisos residenciales más Rooftop en una de las zonas de mayor crecimiento de Rosario, a metros del Puerto Norte, el Alto Rosario Shopping y el Río Paraná. Sus 57 unidades combinan diseño contemporáneo con amenities de primer nivel, y una financiación accesible a lo largo del tiempo.</p>
+
+    <p class="stitle">Amenities del edificio</p>
+    <ul class="feat mb-5">
+      <li><svg width="15" height="15" fill="none" stroke="#0d2f52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg> Rooftop abierto con vistas al río</li>
+      <li><svg width="15" height="15" fill="none" stroke="#0d2f52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg> Parrilla / quincho</li>
+      <li><svg width="15" height="15" fill="none" stroke="#0d2f52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg> Solarium</li>
+      <li><svg width="15" height="15" fill="none" stroke="#0d2f52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg> Gimnasio completamente equipado</li>
+      <li><svg width="15" height="15" fill="none" stroke="#0d2f52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg> Locales comerciales en planta baja</li>
+      <li><svg width="15" height="15" fill="none" stroke="#0d2f52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg> Cocheras subterráneas · Bicicletero</li>
+      <li><svg width="15" height="15" fill="none" stroke="#0d2f52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg> Pet friendly · Admite mascotas</li>
+    </ul>
+
+    <hr class="divider">
+
+    <p class="stitle">Financiación</p>
+    <div class="card mb-5">
+      <div style="font-size:.6rem;font-weight:700;color:#0d2f52;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Entrega · Julio 2027</div>
+      <div style="font-size:1.25rem;font-weight:700;color:#0f172a">30% anticipo</div>
+      <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:.75rem;color:#64748b;line-height:1.6">
+        + 50 cuotas en pesos ajustadas por CAC<br>
+        <span style="color:#0d2f52;font-weight:600">Consultá precio y disponibilidad de unidades.</span>
+      </div>
     </div>
 
-    <!-- Gallery -->
-    <div class="py-6 border-b border-gray-700/50">
-        <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-3 px-4 font-semibold">Imágenes</p>
-        <div id="car" class="relative">
-            <div class="slides" id="slides">
-                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_98201862374961122208522184209867085060520319302638939809413542257718910348453.jpg" alt="ALBA 1"></div>
-                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_62202876492140510679025786345710539420388794379336481853142549989053118529690.jpg" alt="ALBA 2"></div>
-                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_32370831746698462937563557441353902119751021910235683065289691200009410513650.jpg" alt="ALBA 3"></div>
-                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_36604329094139661663384369268338337379272981901001737735066359966588823027855.jpg" alt="ALBA 4"></div>
-                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_5184431767197439031738451876832429803101577535147137594778535655835728002996.jpg" alt="ALBA 5"></div>
-                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_19331295598047280418374732164529016781314130599328556275464229986092649671691.jpg" alt="ALBA 6"></div>
-                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_80400459241018780097167951977397409058705660890242890463522710207965813636327.jpg" alt="ALBA 7"></div>
-                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_111924055096477709819049983141848895564445649237886804991583391343917252707537.jpg" alt="ALBA 8"></div>
-                <div class="slide"><img src="https://static.tokkobroker.com/dev_pictures/70001_11101789435657150176781124447691176716796943448037662876454964880254021965549.jpg" alt="ALBA 9"></div>
-            </div>
-            <button onclick="carNav(-1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white border-none rounded-full w-8 h-8 flex items-center justify-center text-lg transition z-10">‹</button>
-            <button onclick="carNav(1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white border-none rounded-full w-8 h-8 flex items-center justify-center text-lg transition z-10">›</button>
-        </div>
-        <p id="car-counter" class="text-center mt-2 text-xs text-gray-500">1 / 9</p>
+    <hr class="divider">
+
+    <p class="stitle">Ubicación</p>
+    <p class="text-sm mb-3" style="color:#64748b">Don Orione y Bv. Avellaneda Bis · Rosario — zona Puerto Norte, a metros del río y del Alto Rosario Shopping.</p>
+    <div class="map-wrap mb-5" style="height:230px">
+      <iframe src="https://maps.google.com/maps?q=Don+Orione+y+Bulevar+Avellaneda+Bis,+Rosario,+Santa+Fe,+Argentina&output=embed&z=16" width="100%" height="100%" style="border:0" loading="lazy" allowfullscreen></iframe>
     </div>
 
-    <!-- Amenities -->
-    <div class="px-4 py-6 border-b border-gray-700/50">
-        <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-4 font-semibold">Amenities del edificio</p>
-        <ul class="grid grid-cols-2 gap-y-2.5 gap-x-4 text-sm">
-            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Rooftop abierto</li>
-            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Gimnasio</li>
-            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Parrilla / Quincho</li>
-            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Solarium</li>
-            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Pet friendly</li>
-            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Locales comerciales PB</li>
-            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Cochera subterránea</li>
-            <li class="flex items-center gap-2 text-gray-300"><span class="text-fransa-accent font-bold">&gt;</span> Bicicletero</li>
-        </ul>
+    <hr class="divider">
+
+    <div id="cta" class="funnel-wrap">
+      <p class="stitle" style="text-align:center;margin-bottom:2px">¿Te interesa este emprendimiento?</p>
+      <p class="text-center text-xs mb-5" style="color:#64748b">Respondé 3 preguntas para que un asesor te contacte.</p>
+
+      <div class="f-prog">
+        <div class="f-dot on" id="fd1">1</div>
+        <div class="f-line" id="fl1"></div>
+        <div class="f-dot" id="fd2">2</div>
+        <div class="f-line" id="fl2"></div>
+        <div class="f-dot" id="fd3">3</div>
+      </div>
+
+      <!-- Paso 1: Tipología -->
+      <div class="fstep" id="fs1">
+        <p class="f-q">¿Qué tipología te interesa?</p>
+        <button class="f-opt" data-v="1dorm" onclick="pick(1,'1dorm')"><svg class="f-opt-ico" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 012 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span class="f-opt-txt">1 dormitorio — ~60m²</span></button>
+        <button class="f-opt" data-v="2dorm" onclick="pick(1,'2dorm')"><svg class="f-opt-ico" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 012 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span class="f-opt-txt">2 dormitorios — ~100m² o más</span></button>
+        <button class="f-opt" data-v="todas" onclick="pick(1,'todas')"><svg class="f-opt-ico" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span class="f-opt-txt">Quiero ver todas las opciones</span></button>
+        <button class="f-btn" id="fnx1" disabled onclick="toS(2)">Siguiente →</button>
+      </div>
+
+      <!-- Paso 2: Motivo -->
+      <div class="fstep hidden" id="fs2">
+        <p class="f-q">¿Para qué comprarías esta unidad?</p>
+        <button class="f-opt" data-v="vivienda" onclick="pick(2,'vivienda')"><svg class="f-opt-ico" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="f-opt-txt">Vivienda propia / familiar</span></button>
+        <button class="f-opt" data-v="inversion" onclick="pick(2,'inversion')"><svg class="f-opt-ico" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="f-opt-txt">Inversión / renta</span></button>
+        <button class="f-opt" data-v="segunda" onclick="pick(2,'segunda')"><svg class="f-opt-ico" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="f-opt-txt">Segunda vivienda</span></button>
+        <button class="f-opt" data-v="explorando" onclick="pick(2,'explorando')"><svg class="f-opt-ico" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span class="f-opt-txt">Solo estoy explorando</span></button>
+        <button class="f-btn" id="fnx2" disabled onclick="toS(3)">Siguiente →</button>
+        <button class="f-back" onclick="toS(1)">← Anterior</button>
+      </div>
+
+      <!-- Paso 3: Nombre + Plazo -->
+      <div class="fstep hidden" id="fs3">
+        <p class="f-q">Últimos datos</p>
+        <label class="f-lbl" for="fnom">Tu nombre completo *</label>
+        <input id="fnom" type="text" class="f-input" placeholder="Ej. Juan García" oninput="chk3()">
+        <p class="f-q" style="margin-top:4px">¿Cuándo pensás concretar la compra?</p>
+        <button class="f-opt" data-v="inmediato" onclick="pick(3,'inmediato')"><svg class="f-opt-ico" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span class="f-opt-txt">Quiero reservar pronto</span></button>
+        <button class="f-opt" data-v="tres" onclick="pick(3,'tres')"><svg class="f-opt-ico" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span class="f-opt-txt">En los próximos 3 meses</span></button>
+        <button class="f-opt" data-v="seis" onclick="pick(3,'seis')"><svg class="f-opt-ico" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="f-opt-txt">En 6 meses o más</span></button>
+        <button class="f-opt" data-v="indef3" onclick="pick(3,'indef3')"><svg class="f-opt-ico" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span class="f-opt-txt">Sin plazo definido</span></button>
+        <button class="f-btn" id="fnx3" disabled onclick="submitF()">Quiero contactarme →</button>
+        <button class="f-back" onclick="toS(2)">← Anterior</button>
+      </div>
+
+      <!-- Éxito -->
+      <div class="hidden text-center" id="f-ok">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:#f0fdf4;margin-bottom:12px">
+          <svg width="28" height="28" fill="none" stroke="#16a34a" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:6px">¡Todo listo, <span id="f-nom-disp"></span>!</h3>
+        <p style="font-size:.83rem;color:#64748b;margin-bottom:20px">Tocá el botón para hablar con un asesor de Fransa.</p>
+        <a id="f-wa" href="#" target="_blank"
+           onclick="if(typeof fbq==='function') fbq('track','Lead',{content_name:'ALBA Rosario',currency:'USD'})"
+           style="display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:1rem;padding:14px;border-radius:14px;text-decoration:none">
+          <svg fill="currentColor" viewBox="0 0 24 24" style="width:22px;height:22px;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Contactar por WhatsApp
+        </a>
+      </div>
+
+      <!-- Rechazo -->
+      <div class="hidden text-center" id="f-rej">
+        <p style="font-size:1rem;font-weight:700;margin-bottom:8px">Gracias por tu interés</p>
+        <p style="font-size:.83rem;color:#64748b;margin-bottom:14px">Cuando estés más cerca de decidir tu compra, escribinos y te asesoramos con gusto.</p>
+        <p style="font-size:.8rem;font-weight:600;color:#0d2f52">fransapropiedades@gmail.com</p>
+        <button onclick="resetF()" style="margin-top:14px;font-size:.8rem;color:#0d2f52;background:none;border:none;cursor:pointer;font-family:Montserrat,sans-serif;font-weight:600">← Empezar de nuevo</button>
+      </div>
     </div>
 
-    <!-- Location highlight -->
-    <div class="px-4 py-5 border-b border-gray-700/50">
-        <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-3 font-semibold">Ubicación estratégica</p>
-        <ul class="space-y-1.5 text-sm text-gray-300">
-            <li class="flex items-center gap-2"><span class="text-fransa-accent font-bold">&gt;</span> A metros de Puerto Norte</li>
-            <li class="flex items-center gap-2"><span class="text-fransa-accent font-bold">&gt;</span> Próximo a Alto Rosario Shopping</li>
-            <li class="flex items-center gap-2"><span class="text-fransa-accent font-bold">&gt;</span> Acceso directo al Río Paraná</li>
-            <li class="flex items-center gap-2"><span class="text-fransa-accent font-bold">&gt;</span> Conexión directa al centro por Bv. Avellaneda</li>
-        </ul>
-    </div>
+  </main>
 
-    <!-- Delivery & Financing -->
-    <div class="px-4 py-6 border-b border-gray-700/50">
-        <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-4 font-semibold">Entrega y financiación</p>
-        <div class="delivery-card">
-            <div class="flex items-baseline gap-3 mb-3">
-                <p class="text-[10px] text-blue-400 font-semibold uppercase tracking-wider">Entrega</p>
-                <p class="text-2xl font-bold">Julio 2027</p>
-            </div>
-            <div class="border-t border-blue-500/20 pt-3 grid grid-cols-3 gap-3 text-center">
-                <div>
-                    <p class="text-xl font-bold text-white">30%</p>
-                    <p class="text-[10px] text-gray-400 mt-0.5">Anticipo</p>
-                </div>
-                <div class="border-x border-blue-500/20">
-                    <p class="text-xl font-bold text-white">50</p>
-                    <p class="text-[10px] text-gray-400 mt-0.5">Cuotas en pesos</p>
-                </div>
-                <div>
-                    <p class="text-sm font-bold text-blue-300">CAC</p>
-                    <p class="text-[10px] text-gray-400 mt-0.5">Indexadas</p>
-                </div>
-            </div>
-        </div>
-    </div>
+  <footer style="background:#f8fafc;border-top:1px solid #e2e8f0" class="py-6 text-center">
+    <div class="font-logo text-3xl mb-1" style="color:#0f172a">Fransa</div>
+    <p class="text-xs" style="color:#94a3b8">Negocios Inmobiliarios · Rosario</p>
+    <p class="text-xs mt-1" style="color:#94a3b8">fransapropiedades@gmail.com</p>
+  </footer>
 
-    <!-- Funnel CTA -->
-    <div id="cta" class="px-4 py-8 border-b border-gray-700/50">
-        <h3 class="text-xl font-bold mb-1">Consultá precios y disponibilidad</h3>
-        <p class="text-sm text-gray-300 mb-6">Completá los datos para que un asesor de Fransa te contacte.</p>
+  <button id="fab" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Estoy interesado/a</button>
 
-        <!-- Progress -->
-        <div class="flex items-center mb-6">
-            <div id="fd1" class="f-dot on"></div>
-            <div id="fl1" class="f-line"></div>
-            <div id="fd2" class="f-dot"></div>
-            <div id="fl2" class="f-line"></div>
-            <div id="fd3" class="f-dot"></div>
-        </div>
-
-        <!-- Step 1: Tipología -->
-        <div id="fs1" class="fstep space-y-3 fade-in">
-            <p class="text-sm font-semibold mb-1">¿Qué tipología te interesa?</p>
-            <div class="f-opt" data-v="1dorm" onclick="pick(1,'1dorm')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                <span class="text-sm">1 dormitorio — ~60m²</span>
-            </div>
-            <div class="f-opt" data-v="2dorm" onclick="pick(1,'2dorm')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                <span class="text-sm">2 dormitorios — ~100m²+</span>
-            </div>
-            <div class="f-opt" data-v="todas" onclick="pick(1,'todas')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
-                <span class="text-sm">Quiero ver todas las opciones</span>
-            </div>
-            <button id="fnx1" onclick="toS(2)" disabled
-                class="w-full bg-fransa-accent hover:bg-blue-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold py-2.5 rounded transition mt-1 text-sm">
-                Siguiente →
-            </button>
-        </div>
-
-        <!-- Step 2: Motivo -->
-        <div id="fs2" class="fstep hidden space-y-3 fade-in">
-            <button onclick="toS(1)" class="text-xs text-gray-400 hover:text-gray-200 mb-1 flex items-center gap-1">← Anterior</button>
-            <p class="text-sm font-semibold mb-1">¿Para qué la comprarías?</p>
-            <div class="f-opt" data-v="vivienda" onclick="pick(2,'vivienda')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                <span class="text-sm">Vivienda propia / familiar</span>
-            </div>
-            <div class="f-opt" data-v="inversion" onclick="pick(2,'inversion')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span class="text-sm">Inversión / renta</span>
-            </div>
-            <div class="f-opt" data-v="segunda" onclick="pick(2,'segunda')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-                <span class="text-sm">Segunda vivienda</span>
-            </div>
-            <div class="f-opt" data-v="explorando" onclick="pick(2,'explorando')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                <span class="text-sm text-gray-400">Solo estoy explorando</span>
-            </div>
-            <button id="fnx2" onclick="toS(3)" disabled
-                class="w-full bg-fransa-accent hover:bg-blue-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold py-2.5 rounded transition mt-1 text-sm">
-                Siguiente →
-            </button>
-        </div>
-
-        <!-- Step 3: Plazo + Nombre -->
-        <div id="fs3" class="fstep hidden space-y-3 fade-in">
-            <button onclick="toS(2)" class="text-xs text-gray-400 hover:text-gray-200 mb-1 flex items-center gap-1">← Anterior</button>
-            <p class="text-sm font-semibold mb-1">¿Cuándo pensás tomar la decisión?</p>
-            <div class="f-opt" data-v="pronto" onclick="pick(3,'pronto')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span class="text-sm">Quiero reservar pronto</span>
-            </div>
-            <div class="f-opt" data-v="tres" onclick="pick(3,'tres')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                <span class="text-sm">En los próximos 3 meses</span>
-            </div>
-            <div class="f-opt" data-v="seis" onclick="pick(3,'seis')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                <span class="text-sm text-gray-400">En 6 meses o más</span>
-            </div>
-            <div class="f-opt" data-v="indef" onclick="pick(3,'indef')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span class="text-sm text-gray-400">Sin plazo definido</span>
-            </div>
-            <div>
-                <label for="fnom" class="block text-sm font-semibold mb-1 mt-1">Tu nombre *</label>
-                <input id="fnom" type="text" placeholder="Ej. María García"
-                    class="w-full px-4 py-2 bg-transparent border border-gray-400 rounded focus:outline-none focus:border-fransa-accent focus:ring-1 focus:ring-fransa-accent transition text-white placeholder-gray-500 text-sm">
-            </div>
-            <button id="fnx3" onclick="submitF()" disabled
-                class="w-full bg-fransa-accent hover:bg-blue-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold py-2.5 rounded transition mt-1 text-sm">
-                Consultar disponibilidad →
-            </button>
-        </div>
-
-        <!-- Éxito -->
-        <div id="f-ok" class="hidden fade-in text-center py-4">
-            <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-green-500/20 text-green-400 mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            </div>
-            <h3 class="text-xl font-bold mb-1">¡Listo, <span id="f-nom-disp"></span>!</h3>
-            <p class="text-gray-300 text-sm mb-6">Hacé clic para hablar con un asesor de Fransa y conocer los precios de ALBA.</p>
-            <a id="f-wa" href="#" target="_blank" onclick="if(typeof fbq==='function')fbq('track','Lead',{content_name:'ALBA Rosario',currency:'USD'});"
-               class="flex items-center justify-center w-full bg-[#25D366] hover:bg-[#20b858] text-white font-bold py-3 px-4 rounded transition gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Hablar con un asesor
-            </a>
-            <button onclick="resetF()" class="mt-4 text-xs text-gray-500 hover:text-gray-300">Volver al inicio</button>
-        </div>
-
-        <!-- Rechazo -->
-        <div id="f-rej" class="hidden fade-in text-center py-4">
-            <h3 class="text-lg font-bold mb-3">¡Gracias por tu interés!</h3>
-            <p class="text-gray-300 text-sm leading-relaxed">En este momento priorizamos consultas de compradores con horizonte de decisión en los próximos meses. Cuando estés listo/a para decidir, no dudes en volver a escribirnos.</p>
-            <button onclick="resetF()" class="mt-5 text-sm text-fransa-accent hover:underline">Volver al formulario</button>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="border-t border-gray-700/50 px-4 py-6 text-center mb-20">
-        <p class="text-xs text-gray-400">fransapropiedades@gmail.com</p>
-        <p class="text-xs text-gray-500 mt-1">© Fransa Negocios Inmobiliarios · Rosario</p>
-    </div>
-
-</div>
-
-<!-- FAB -->
-<button id="fab" onclick="if(typeof fbq==='function') fbq('track','Contact',{content_name:'ALBA Rosario', source:'FAB'}); document.getElementById('cta').scrollIntoView({behavior:'smooth'});">
-    Estoy interesado/a
-</button>
-
-<!-- Lightbox -->
-<div id="lb" onclick="closeLb()">
+  <div id="lb" onclick="closeLb()">
     <button id="lb-close" onclick="closeLb()">×</button>
     <button class="lb-arr" id="lb-prev" onclick="event.stopPropagation();lbNav(-1)">‹</button>
     <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
     <button class="lb-arr" id="lb-next" onclick="event.stopPropagation();lbNav(1)">›</button>
     <div id="lb-cnt"></div>
-</div>
+  </div>
 
-<script>
-    // ---- LIGHTBOX ----
+  <script>
+    // Carousel con dots
+    const trk=document.getElementById('trk'),dotsEl=document.getElementById('dots');
+    const total=document.querySelectorAll('.slide').length;let cur=0,tmr;
+    for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot-ind'+(i===0?' on':'');dotsEl.appendChild(d);}
+    function updateDots(){document.querySelectorAll('.dot-ind').forEach((d,i)=>d.className='dot-ind'+(i===cur?' on':''));}
+    function go(n){cur=(n+total)%total;trk.style.transform=`translateX(-${cur*100}%)`;updateDots();}
+    function cs(d){go(cur+d);rt()}function rt(){clearInterval(tmr);tmr=setInterval(()=>go(cur+1),4500)}rt();
+    const c=document.getElementById('car');
+    c.addEventListener('mouseenter',()=>clearInterval(tmr));c.addEventListener('mouseleave',rt);
+    let tx=0;c.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+    c.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40){go(cur+(d>0?1:-1));rt()}},{passive:true});
+
+    // Lightbox
     let lbSrcs=[],lbI=0;
     function openLb(idx){lbSrcs=Array.from(document.querySelectorAll('#car .slide img')).map(i=>i.src);lbI=idx;lbRender();document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
     function lbRender(){document.getElementById('lb-img').src=lbSrcs[lbI];document.getElementById('lb-cnt').textContent=(lbI+1)+' / '+lbSrcs.length;}
@@ -369,40 +334,16 @@
     document.getElementById('lb').addEventListener('touchstart',e=>{lbTx=e.touches[0].clientX;},{passive:true});
     document.getElementById('lb').addEventListener('touchend',e=>{const d=lbTx-e.changedTouches[0].clientX;if(Math.abs(d)>40)lbNav(d>0?1:-1);},{passive:true});
 
-    // ---- CAROUSEL ----
-    let cur=0;
-    const slidesEl=document.getElementById('slides');
-    const totalSlides=document.querySelectorAll('#car .slide').length;
-    const counterEl=document.getElementById('car-counter');
-    function updateCounter(){counterEl.textContent=(cur+1)+' / '+totalSlides;}
-    function goSlide(n){cur=(n+totalSlides)%totalSlides;slidesEl.style.transform=`translateX(-${cur*100}%)`;updateCounter();}
-    function carNav(d){goSlide(cur+d);}
-    let carTx=0;
-    document.getElementById('car').addEventListener('touchstart',e=>{carTx=e.touches[0].clientX;},{passive:true});
-    document.getElementById('car').addEventListener('touchend',e=>{const d=carTx-e.changedTouches[0].clientX;if(Math.abs(d)>40)carNav(d>0?1:-1);},{passive:true});
-
-    // ---- FUNNEL ----
-    const TX={
-        '1dorm':'1 dormitorio (~60m²)',
-        '2dorm':'2 dormitorios (~100m²+)',
-        todas:'Todas las tipologías',
-        vivienda:'Vivienda propia / familiar',
-        inversion:'Inversión / renta',
-        segunda:'Segunda vivienda',
-        explorando:'Solo estoy explorando',
-        pronto:'Quiero reservar pronto',
-        tres:'En los próximos 3 meses',
-        seis:'En 6 meses o más',
-        indef:'Sin plazo definido'
-    };
+    // Funnel
+    const PROP={url:'https://www.fransapropiedades.com.ar/d/70001-ALBA-en-Rosario',wa:'5493417790298'};
+    const TX={'1dorm':'1 dormitorio (~60m²)','2dorm':'2 dormitorios (~100m² o más)',todas:'Todas las opciones',vivienda:'Vivienda propia / familiar',inversion:'Inversión / renta',segunda:'Segunda vivienda',explorando:'Solo estoy explorando',inmediato:'Quiero reservar pronto',tres:'En los próximos 3 meses',seis:'En 6 meses o más',indef3:'Sin plazo definido'};
     const sel={};
     function pick(s,v){sel['s'+s]=v;document.querySelectorAll('#fs'+s+' .f-opt').forEach(e=>e.classList.remove('on'));document.querySelector('#fs'+s+' [data-v="'+v+'"]').classList.add('on');if(s<3){document.getElementById('fnx'+s).disabled=false;}else{chk3();}}
     function chk3(){document.getElementById('fnx3').disabled=!(sel.s3&&document.getElementById('fnom').value.trim());}
-    function toS(n){if(n===2 && typeof fbq==='function') fbq('track','InitiateCheckout',{content_name:'ALBA Rosario', step:2}); if(n===3 && typeof fbq==='function') fbq('track','Schedule',{content_name:'ALBA Rosario', step:3}); document.querySelectorAll('.fstep').forEach(e=>e.classList.add('hidden'));document.getElementById('fs'+n).classList.remove('hidden');[1,2,3].forEach(i=>{document.getElementById('fd'+i).className='f-dot'+(i<=n?' on':'');const l=document.getElementById('fl'+i);if(l)l.className='f-line'+(i<n?' on':'');});setTimeout(()=>document.getElementById('cta').scrollIntoView({behavior:'smooth',block:'nearest'}),50);}
-    function submitF(){const nom=document.getElementById('fnom').value.trim();if(!nom){document.getElementById('fnom').focus();return;}if(!sel.s3)return;document.getElementById('fs3').classList.add('hidden');const rej=sel.s2==='explorando'||sel.s3==='seis'||sel.s3==='indef';if(rej){document.getElementById('f-rej').classList.remove('hidden');if(typeof fbq==='function') fbq('trackCustom','RejectedLead',{content_name:'ALBA Rosario'});}else{const msg=`Hola, soy ${nom}. Me interesa el emprendimiento ALBA (Don Orione y Bv. Avellaneda, Rosario). Tipología: ${TX[sel.s1]}. Motivo: ${TX[sel.s2]}. Plazo: ${TX[sel.s3]}.`;document.getElementById('f-wa').href='https://api.whatsapp.com/send?phone=5493417790298&text='+encodeURIComponent(msg);document.getElementById('f-nom-disp').textContent=nom;document.getElementById('f-ok').classList.remove('hidden');}setTimeout(()=>document.getElementById('cta').scrollIntoView({behavior:'smooth',block:'nearest'}),50);}
+    function toS(n){document.querySelectorAll('.fstep').forEach(e=>e.classList.add('hidden'));document.getElementById('fs'+n).classList.remove('hidden');[1,2,3].forEach(i=>{document.getElementById('fd'+i).className='f-dot'+(i<=n?' on':'');const l=document.getElementById('fl'+i);if(l)l.className='f-line'+(i<n?' on':'');});setTimeout(()=>document.getElementById('cta').scrollIntoView({behavior:'smooth',block:'nearest'}),50);}
+    function submitF(){const nom=document.getElementById('fnom').value.trim();if(!nom){document.getElementById('fnom').focus();return;}if(!sel.s3)return;document.getElementById('fs3').classList.add('hidden');const rej=sel.s2==='explorando'||sel.s3==='seis'||sel.s3==='indef3';if(rej){document.getElementById('f-rej').classList.remove('hidden');}else{const msg=`Hola, soy ${nom}. Me interesa el emprendimiento ALBA. Tipología: ${TX[sel.s1]}. Motivo: ${TX[sel.s2]}. Plazo: ${TX[sel.s3]}. ${PROP.url}`;document.getElementById('f-wa').href='https://api.whatsapp.com/send?phone='+PROP.wa+'&text='+encodeURIComponent(msg);document.getElementById('f-nom-disp').textContent=nom;document.getElementById('f-ok').classList.remove('hidden');}setTimeout(()=>document.getElementById('cta').scrollIntoView({behavior:'smooth',block:'nearest'}),50);}
     function resetF(){Object.keys(sel).forEach(k=>delete sel[k]);document.querySelectorAll('.f-opt').forEach(e=>e.classList.remove('on'));document.getElementById('fnom').value='';['fnx1','fnx2','fnx3'].forEach(id=>document.getElementById(id).disabled=true);document.getElementById('f-ok').classList.add('hidden');document.getElementById('f-rej').classList.add('hidden');document.querySelectorAll('.unit-card').forEach(c=>c.classList.remove('selected'));toS(1);}
     function selectUnit(type){document.querySelectorAll('.unit-card').forEach(c=>c.classList.remove('selected'));event.currentTarget.classList.add('selected');pick(1,type);document.getElementById('cta').scrollIntoView({behavior:'smooth'});}
-    document.getElementById('fnom').addEventListener('input',chk3);
-</script>
+  </script>
 </body>
 </html>
